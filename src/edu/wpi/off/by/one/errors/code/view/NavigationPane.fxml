@@ -13,11 +13,11 @@
         <RowConstraints minHeight="0" valignment="CENTER" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Button fx:id="previousButton" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0"/>
-        <Label fx:id="InstructionLabel" minHeight="0.0" minWidth="0" text="Navigation Instruction here" GridPane.columnIndex="1" />
+        <Button fx:id="previousButton" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" onAction="#onPreviousButtonClick"/>
+        <Label fx:id="instructionLabel" minHeight="0.0" minWidth="0" text="Navigation Instruction here" GridPane.columnIndex="1" />
         <StackPane minHeight="0.0" minWidth="0" GridPane.columnIndex="2">
             <children>
-                <Button fx:id="nextButton" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0"/>
+                <Button fx:id="nextButton" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" onAction="#onNextButtonClick"/>
                 <Button fx:id="closePaneButton" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#onClosePaneButtonClick" prefHeight="30.0" prefWidth="30.0" text="X" StackPane.alignment="TOP_RIGHT" />
             </children>
         </StackPane>

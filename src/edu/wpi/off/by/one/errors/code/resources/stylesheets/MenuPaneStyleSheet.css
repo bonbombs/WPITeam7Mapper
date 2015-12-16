@@ -34,13 +34,13 @@
 
 /*Directions Button States*/
 #directionsMenuRadioButton{
-    -fx-background-image: url("/edu/wpi/off/by/one/errors/code/resources/icons/white/TurnRightArrowWhite.png");
+    -fx-background-image: url("/edu/wpi/off/by/one/errors/code/resources/icons/white/directionsWhite.png");
     -fx-background-size: cover;
 }
 
 #directionsMenuRadioButton:selected{
     -fx-background-color: #FFFFFF;
-    -fx-background-image: url("/edu/wpi/off/by/one/errors/code/resources/icons/red/turnrightarrowRed.png");
+    -fx-background-image: url("/edu/wpi/off/by/one/errors/code/resources/icons/red/directionsRed.png");
     -fx-background-size: cover;
 }
 

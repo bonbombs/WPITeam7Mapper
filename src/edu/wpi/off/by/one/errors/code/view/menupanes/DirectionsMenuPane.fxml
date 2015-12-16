@@ -5,8 +5,8 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import edu.wpi.off.by.one.errors.code.controller.customcontrols.AutoCompleteNameTextField?>
-<fx:root minWidth="0.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<?import edu.wpi.off.by.one.errors.code.controller.customcontrols.ClearableTextField?>
+<fx:root type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <top>
         <VBox minWidth="0.0" spacing="10" BorderPane.alignment="CENTER">
             <children>
@@ -15,8 +15,8 @@
                     <center>
                         <VBox spacing="10">
                             <children>
-                                <AutoCompleteNameTextField fx:id="originTextField" promptText="From" minWidth="0.0" BorderPane.alignment="CENTER" />
-                                <AutoCompleteNameTextField fx:id="destinationTextField" promptText="To" minWidth="0.0" BorderPane.alignment="CENTER" />
+                                <ClearableTextField fx:id="originTextField" promptText="From" minWidth="0.0" BorderPane.alignment="CENTER" />
+                                <ClearableTextField fx:id="destinationTextField" promptText="To" minWidth="0.0" BorderPane.alignment="CENTER" />
                             </children>
                         </VBox>
                     </center>
@@ -28,26 +28,7 @@
                     <content>
                         <VBox minHeight="0.0" minWidth="0.0">
                            <children>
-                            <GridPane prefHeight="44.0" prefWidth="235.0">
-        						<columnConstraints>
-         				 			<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="300.0" />
-          							<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        						</columnConstraints>
-        						<rowConstraints>
-          							<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        						</rowConstraints>
-         						<children>
-                           	   	<CheckBox fx:id="accessibleCheckbox" onAction="#selectAccessible" text="Prioritize Accessibility" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                           	  	<Button fx:id="foodButton" contentDisplay="CENTER" minWidth="0.0" mnemonicParsing="false" text="Find nearest food" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                       			<Button fx:id="mensRoomButton" contentDisplay="CENTER" minWidth="0.0" mnemonicParsing="false" text="Find nearest men's room" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-                       			<Button fx:id="womensRoomButton" contentDisplay="CENTER" minWidth="0.0" mnemonicParsing="false" text="Find nearest women's room" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
-                       			<Button fx:id="genderNeutralRestroomButton" contentDisplay="CENTER" minWidth="0.0" mnemonicParsing="false" text="Find nearest gender neutral restroom" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
-                               <!-- CheckBox text="Indoors" /-->
-                               <!-- CheckBox text="Stairs" /-->
-                               <!-- CheckBox text="Wind Tunnel" /-->
-                                    </children>
-      							</GridPane>
+                               <CheckBox fx:id="accessibleCheckbox" onAction="#selectAccessible" text="Prioritize Accessibility" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
                            </children>
                         </VBox>
                     </content>
@@ -67,8 +48,20 @@
         <ListView fx:id="directionsListView" minWidth="0.0" BorderPane.alignment="CENTER" />
     </center>
     <bottom>
-    	
-        <GridPane hgap="5">
+        <StackPane alignment="CENTER">
+            <children>
+                <MenuButton text="Share">
+                    <items>
+                        <MenuItem text="Email" onAction="#onEmailButtonClick"/>
+                        <MenuItem text="SMS" onAction="#onSMSButtonClick"/>
+                    </items>
+                </MenuButton>
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="0" right="0" top="10" />
+            </padding>
+        </StackPane>
+        <!--<GridPane hgap="5">
             <columnConstraints>
                 <ColumnConstraints fillWidth="true" percentWidth="50"/>
                 <ColumnConstraints fillWidth="true" percentWidth="50"/>
@@ -79,9 +72,8 @@
             <children>
                 <Button fx:id="smsButton" text="SMS" minWidth="0" maxWidth="Infinity" GridPane.columnIndex="0" onAction="#onSMSButtonClick"/>
                 <Button fx:id="emailButton" text="Email" minWidth="0" maxWidth="Infinity" GridPane.columnIndex="1" onAction="#onEmailButtonClick" />
-
             </children>
-        </GridPane>
+        </GridPane>-->
     </bottom>
     <padding>
         <Insets bottom="0" left="10.0" right="10.0" top="0" />

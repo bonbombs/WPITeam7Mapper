@@ -8,7 +8,7 @@
 <fx:root type="VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
    	  <Label text="Name:" />
-   	  <TextField fx:id="nodeNameTextField" prefWidth="200.0" />
+   	  <ClearableTextField fx:id="nodeNameTextField" prefWidth="200.0" />
       <BorderPane minWidth="0.0">
          <left>
             <Label fx:id="nodeIdLabel" minWidth="0.0" text="ID:" BorderPane.alignment="CENTER" />
@@ -88,7 +88,7 @@
       </GridPane>
       <BorderPane minWidth="0.0">
          <center>
-            <TextField fx:id="tagTextField" minWidth="0.0" promptText="Add Custom Tag" BorderPane.alignment="CENTER" />
+            <ClearableTextField fx:id="tagTextField" minWidth="0.0" promptText="Add Custom Tag" BorderPane.alignment="CENTER" />
          </center>
          <right>
             <Button fx:id="addTagButton" minWidth="0.0" mnemonicParsing="false" text="Add" BorderPane.alignment="CENTER" />

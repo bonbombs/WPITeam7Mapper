@@ -47,6 +47,7 @@ public class SettingsMenuPane extends BorderPane {
     @FXML private ClearableTextField emailTextField;
     @FXML CheckBox pirateCheckbox;
     @FXML protected ComboBox carrierChoiceBox;
+    @FXML protected ComboBox unitChoiceBox;
     //endregion
 
     //region Other attributes
@@ -78,6 +79,7 @@ public class SettingsMenuPane extends BorderPane {
         loadUserSettings();
         ControllerSingleton.getInstance().registerSettingsMenuPane(this);
         populateCarrierChoiceBox();
+        populateUnitChoiceBox();
     }
     //endregion
 
@@ -91,21 +93,17 @@ public class SettingsMenuPane extends BorderPane {
                // printWriter.println(PHONE_LINE_ID + phoneTextField.getText());
                 if(isEmailValid()) {
                     printWriter.println(EMAIL_LINE_ID + emailTextField.getText());
-                    ControllerSingleton.getInstance().getMenuPane().getDirectionsMenuPane().disableEmailButton(false);
                     emailTextField.hideErrorLabel();
                 }
                 else {
                     emailTextField.showErrorLabel("!Error Invalid Email");
-                    ControllerSingleton.getInstance().getMenuPane().getDirectionsMenuPane().disableEmailButton(true);
                 }
                 if(isNumberValid()) {
                     printWriter.println(PHONE_LINE_ID + phoneTextField.getText());
-                    ControllerSingleton.getInstance().getMenuPane().getDirectionsMenuPane().disableSMSButton(false);
                     phoneTextField.hideErrorLabel();
                 }
                 else {
                     phoneTextField.showErrorLabel("!Error Invalid Phone Number");
-                    ControllerSingleton.getInstance().getMenuPane().getDirectionsMenuPane().disableSMSButton(true);
                 }
                 printWriter.close();
             }catch (IOException excpt){
@@ -119,6 +117,10 @@ public class SettingsMenuPane extends BorderPane {
     	carrierChoiceBox.getItems().addAll("Alltel Wireless", "AT&T Wireless", "AT&T Mobility",
     			"Boost Mobile", "Cricket", "Metro PCS", "Sprint PCS", "Sprint Nextel", "Straight Talk",
     			"T-Mobile", "U.S. Cellular", "Verizon", "Virgin Mobile");
+    }
+    
+    private void populateUnitChoiceBox(){
+    	unitChoiceBox.getItems().addAll("Meters", "Feet");
     }
 
     private void loadUserSettings(){
@@ -201,5 +203,14 @@ public class SettingsMenuPane extends BorderPane {
     		isValid = false;
     	}
     	return isValid;
+    }
+    
+    public boolean isMeter(){
+    	String unit = (String) unitChoiceBox.getValue();
+    	if (unit == "Meters"){
+    		return true;
+    	}else{
+    		return false;
+    	}
     }
 }

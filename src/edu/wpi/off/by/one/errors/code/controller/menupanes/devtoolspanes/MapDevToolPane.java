@@ -9,6 +9,7 @@ import java.util.HashMap;
 import edu.wpi.off.by.one.errors.code.controller.ControllerSingleton;
 import edu.wpi.off.by.one.errors.code.controller.MainPane;
 import edu.wpi.off.by.one.errors.code.controller.MapRootPane;
+import edu.wpi.off.by.one.errors.code.controller.customcontrols.ClearableTextField;
 import edu.wpi.off.by.one.errors.code.model.Coordinate;
 import edu.wpi.off.by.one.errors.code.model.Display;
 import edu.wpi.off.by.one.errors.code.model.Map;
@@ -38,13 +39,13 @@ public class MapDevToolPane extends VBox {
 	HashMap<String,Display> displayList;
 
 	@FXML public ChoiceBox<String> mapChoiceBox;
-	@FXML TextField nameTextField;
+	@FXML ClearableTextField nameTextField;
 	@FXML TextField xTextField;
 	@FXML TextField yTextField;
 	@FXML TextField zTextField;
 	@FXML TextField rotationTextField;
 	@FXML TextField scaleTextField;
-	@FXML TextField mapTagTextField;
+	@FXML ClearableTextField mapTagTextField;
 	@FXML Label pathLabel;
 	@FXML Button changeImageButton;
 	@FXML ToggleButton selectColorButton;

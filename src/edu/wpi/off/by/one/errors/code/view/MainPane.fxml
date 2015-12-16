@@ -6,39 +6,50 @@
 <?import edu.wpi.off.by.one.errors.code.controller.*?>
 <?import javafx.scene.control.*?>
 
-<fx:root type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <left>
-        <MenuPane fx:id="menuPane" prefWidth="50" maxWidth="300" minWidth="50" />
-    </left>
-    <center>
-        <BorderPane BorderPane.alignment="CENTER">
+<?import edu.wpi.off.by.one.errors.code.controller.other.EmailPane?>
+<?import edu.wpi.off.by.one.errors.code.controller.other.SMSPane?>
+<fx:root type="StackPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <BorderPane>
+            <left>
+                <MenuPane fx:id="menuPane" prefWidth="50" maxWidth="300" minWidth="50" />
+            </left>
             <center>
-                <StackPane fx:id="mapContainer" maxHeight="Infinity">
-                    <children>
-                        <ScrollPane fx:id="mapScrollPane" hbarPolicy="NEVER" prefHeight="Infinity" prefWidth="Infinity" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
-                            <content>
-                                <MapRootPane fx:id="mapRootPane" maxHeight="Infinity" maxWidth="Infinity"/>
-                            </content>
-                        </ScrollPane>
-                        <Slider fx:id="floorSlider" blockIncrement="1" majorTickUnit="1" max="5" maxHeight="500" min="-2" minorTickCount="0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1" StackPane.alignment="CENTER_LEFT" onMouseClicked="#onFloorSliderMouseCLicked">
-                     <padding>
-                        <Insets left="5.0" right="5.0" />
-                     </padding></Slider>
-                        <VBox maxHeight="160.0" maxWidth="40.0" prefWidth="40.0" StackPane.alignment="CENTER_RIGHT">
+                <BorderPane BorderPane.alignment="CENTER">
+                    <center>
+                        <StackPane fx:id="mapContainer" maxHeight="Infinity">
                             <children>
-                                <Button fx:id="rotateLeftButton" maxWidth="1.7976931348623157E308" prefHeight="40.0" text="L" />
-                                <Button fx:id="rotateRightButton" maxWidth="1.7976931348623157E308" prefHeight="40.0" text="R" />
-                                <Button fx:id="zoomInButton" maxWidth="1.7976931348623157E308" prefHeight="40.0" text="+" />
-                                <Button fx:id="zoomOutButton" maxWidth="1.7976931348623157E308" prefHeight="40.0" text="-" />
+                                <ScrollPane fx:id="mapScrollPane" hbarPolicy="NEVER" prefHeight="Infinity" prefWidth="Infinity" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+                                    <content>
+                                        <MapRootPane fx:id="mapRootPane" maxHeight="Infinity" maxWidth="Infinity"/>
+                                    </content>
+                                </ScrollPane>
+                                <Slider fx:id="floorSlider" blockIncrement="1" majorTickUnit="1" max="5" maxHeight="500" min="-2" minorTickCount="0" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1" StackPane.alignment="CENTER_LEFT" onMouseClicked="#onFloorSliderMouseCLicked">
+                                    <padding>
+                                        <Insets left="5.0" right="5.0" />
+                                    </padding></Slider>
+                                <VBox maxHeight="160.0" maxWidth="40.0" prefWidth="40.0" StackPane.alignment="CENTER_RIGHT">
+                                    <children>
+                                        <Button fx:id="rotateLeftButton" maxWidth="1.7976931348623157E308" prefHeight="40.0" text="L" />
+                                        <Button fx:id="rotateRightButton" maxWidth="1.7976931348623157E308" prefHeight="40.0" text="R" />
+                                        <Button fx:id="zoomInButton" maxWidth="1.7976931348623157E308" prefHeight="40.0" text="+" />
+                                        <Button fx:id="zoomOutButton" maxWidth="1.7976931348623157E308" prefHeight="40.0" text="-" />
+                                    </children>
+                                </VBox>
+                                <Button fx:id="openNavigationPaneButton" onAction="#onOpenNavigationPaneButtonClick" prefWidth="75" text="^" StackPane.alignment="BOTTOM_CENTER" />
                             </children>
-                        </VBox>
-                        <Button fx:id="openNavigationPaneButton" onAction="#onOpenNavigationPaneButtonClick" prefWidth="75" text="^" StackPane.alignment="BOTTOM_CENTER" />
-                    </children>
-                </StackPane>
+                        </StackPane>
+                    </center>
+                    <bottom>
+                        <NavigationPane fx:id="navigationPane" minHeight="0" prefHeight="0" maxHeight="150"/>
+                    </bottom>
+                </BorderPane>
             </center>
-            <bottom>
-                <NavigationPane fx:id="navigationPane" minHeight="0" prefHeight="0" maxHeight="150"/>
-            </bottom>
         </BorderPane>
-    </center>
+        <StackPane fx:id="smsEmailContainer" visible="false" alignment="CENTER" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
+            <EmailPane fx:id="emailPane" maxHeight="700" maxWidth="900"/>
+            <SMSPane fx:id="smsPane" maxHeight="700" maxWidth="900"/>
+        </StackPane>
+    </children>
+
 </fx:root>

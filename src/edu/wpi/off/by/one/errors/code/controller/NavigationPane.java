@@ -2,9 +2,12 @@ package edu.wpi.off.by.one.errors.code.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import edu.wpi.off.by.one.errors.code.controller.customcontrols.IconedLabel;
+import edu.wpi.off.by.one.errors.code.model.Node;
+import edu.wpi.off.by.one.errors.code.model.Step;
 import javafx.animation.Animation;
 import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
@@ -22,7 +25,7 @@ import javafx.util.Duration;
  */
 public class NavigationPane extends GridPane{
     //region FXML attributes
-	@FXML protected Label InstructionLabel;
+	@FXML protected Label instructionLabel;
     //endregion
 
     //region Properties
@@ -33,6 +36,16 @@ public class NavigationPane extends GridPane{
     //endregion
 
     //region Other attributes
+    /**
+     * List that contains the list of directions/Step
+     */
+    private ArrayList<Step> directionsList;
+
+    /**
+     * Keeps track of which instruction is currently showing
+     */
+    private int currentInstructionIndex;
+
     /**
      * Animation object to collapse this pane by setting its height to 0
      */
@@ -80,6 +93,9 @@ public class NavigationPane extends GridPane{
             throw new RuntimeException(excpt);
         }
         ControllerSingleton.getInstance().registerNavigationPane(this);
+        this.currentInstructionIndex = 0;
+        directionsList = new ArrayList<Step>();
+        this.directionsList.add(new Step());
         this.isExpandedProperty = new SimpleBooleanProperty(true);
         setListeners();
 
@@ -106,6 +122,14 @@ public class NavigationPane extends GridPane{
     public void setIsExpandedProperty(boolean newValue){
         isExpandedProperty.set(newValue);
     }
+
+    /**
+     * Sets the list of directions
+     * @param directionsList The new list of directions
+     */
+    public void setDirectionsList(ArrayList<Step> directionsList){
+        this.directionsList = directionsList;
+    }
     //endregion
 
     //region Listener Methods
@@ -115,6 +139,26 @@ public class NavigationPane extends GridPane{
      */
     @FXML protected void onClosePaneButtonClick(){
         collapseAnimation.play();
+    }
+
+    /**
+     * Listener for previous Button
+     * Shows the previous instruction
+     */
+    @FXML protected void onPreviousButtonClick(){
+        currentInstructionIndex -= 1;
+        if (currentInstructionIndex >= 0 && currentInstructionIndex< directionsList.size())
+            instructionLabel.setText(directionsList.get(currentInstructionIndex).toString());
+    }
+
+    /**
+     * Listener for Next Button
+     * Shows the Next instruction
+     */
+    @FXML protected void onNextButtonClick(){
+        currentInstructionIndex += 1;
+        if (currentInstructionIndex >= 0 && currentInstructionIndex< directionsList.size())
+            instructionLabel.setText(directionsList.get(currentInstructionIndex).toString());
     }
 
     /**
@@ -134,7 +178,29 @@ public class NavigationPane extends GridPane{
     public void expand(){
         expandAnimation.play();
     }
+
+    /**
+     * Clears the list of directions
+     */
+    public void clearInstructions(){
+        this.directionsList.clear();
+        this.currentInstructionIndex = 0;
+        this.directionsList.add(new Step());
+    }
+
+    /**
+     * Initializes the navigation system
+     */
+    public void start(ArrayList<Step> directionsList){
+        if(!isExpandedProperty.get())
+            expandAnimation.play();
+        this.directionsList = directionsList;
+        currentInstructionIndex = 0;
+        instructionLabel.setText(this.directionsList.get(currentInstructionIndex).toString());
+    }
     //endregion
+
+
 
 
 

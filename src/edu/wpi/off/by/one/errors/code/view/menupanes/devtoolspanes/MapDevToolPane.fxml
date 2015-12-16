@@ -5,13 +5,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root minWidth="0.0" prefHeight="413.0" prefWidth="235" spacing="10.0" type="VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<?import edu.wpi.off.by.one.errors.code.controller.customcontrols.ClearableTextField?>
+<fx:root type="VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label text="Select a map" />
       <ChoiceBox fx:id="mapChoiceBox" prefHeight="25.0" prefWidth="222.0" />
       <Separator prefWidth="200.0" />
       <Label minWidth="0.0" text="Name" />
-      <TextField fx:id="nameTextField" minWidth="0.0" promptText="Name of the Map" />
+      <ClearableTextField fx:id="nameTextField" minWidth="0.0" promptText="Name of the Map" />
       <Label minWidth="0.0" text="Center Coordinates" />
       <GridPane hgap="5.0" minWidth="0.0">
         <columnConstraints>
@@ -96,7 +97,7 @@
             <Button mnemonicParsing="false" onAction="#assignMapTag" text="Add" BorderPane.alignment="CENTER" />
          </right>
          <center>
-            <TextField fx:id="mapTagTextField" onAction="#assignMapTag" BorderPane.alignment="CENTER" />
+            <ClearableTextField fx:id="mapTagTextField" onAction="#assignMapTag" BorderPane.alignment="CENTER" />
          </center>
          <bottom>
             <HBox prefHeight="24.0" prefWidth="235.0" BorderPane.alignment="CENTER">

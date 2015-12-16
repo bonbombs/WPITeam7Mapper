@@ -1,7 +1,8 @@
 package edu.wpi.off.by.one.errors.code.model;
-
-import java.util.ArrayList;
-
+/**
+ * @author Jules Voltaire on 12/14/2015.
+ * @author Nathan Beeten
+ */
 public class Step {
 	private Node startNode;
 	private Node endNode;
@@ -11,6 +12,12 @@ public class Step {
 		this.startNode = startNode;
 		this.endNode = endNode;
 		this.instruction = "";
+	}
+
+	public Step(){
+		this.startNode =  new Node(new Coordinate(-1));
+		this.endNode =  new Node(new Coordinate(-1));
+		this.instruction = "Add a new route";
 	}
 	
 	public Node getStart(){

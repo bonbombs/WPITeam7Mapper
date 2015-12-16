@@ -33,12 +33,12 @@ public class NodeDevToolPane extends VBox {
 	MainPane mainPane;
 	Display currentDisplay;
 	NodeDisplay currentNd;
-	@FXML TextField nodeNameTextField;
+	@FXML ClearableTextField nodeNameTextField;
 	@FXML Label nodeIdLabel;
 	@FXML TextField xTextField;
 	@FXML TextField yTextField;
 	@FXML TextField zTextField;
-	@FXML TextField tagTextField;
+	@FXML ClearableTextField tagTextField;
 	@FXML ListView<String> tagListView;
 	//@FXML ListView<Id> edgeListView;
 	@FXML Button addTagButton;

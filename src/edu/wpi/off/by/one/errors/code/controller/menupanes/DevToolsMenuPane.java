@@ -4,17 +4,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 
 import edu.wpi.off.by.one.errors.code.controller.ControllerSingleton;
 import edu.wpi.off.by.one.errors.code.controller.MapRootPane;
 import edu.wpi.off.by.one.errors.code.controller.menupanes.devtoolspanes.EdgeDevToolPane;
 import edu.wpi.off.by.one.errors.code.controller.menupanes.devtoolspanes.MapDevToolPane;
 import edu.wpi.off.by.one.errors.code.controller.menupanes.devtoolspanes.NodeDevToolPane;
-import edu.wpi.off.by.one.errors.code.controller.menupanes.devtoolspanes.PathDevToolPane;
 import edu.wpi.off.by.one.errors.code.model.Display;
 import edu.wpi.off.by.one.errors.code.model.FileIO;
-import edu.wpi.off.by.one.errors.code.model.Map;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;

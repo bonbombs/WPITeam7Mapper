@@ -15,23 +15,19 @@
       </ListView>
    </center>
    <top>
-      <VBox minWidth="0" BorderPane.alignment="CENTER">
+      <VBox spacing="10" minWidth="0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="searchLabel" maxHeight="40" minWidth="0.0" text="Search" />
             <BorderPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="30.0">
                <center>
-                   <AutoCompleteTextField fx:id="searchField" maxHeight="-Infinity" minWidth="0.0" prefHeight="30.0" promptText="Search for Location" BorderPane.alignment="CENTER" />
+                   <ClearableTextField fx:id="searchField" maxHeight="-Infinity" minWidth="0.0" prefHeight="30.0" promptText="Search for Location" BorderPane.alignment="CENTER" />
                </center>
                <right>
                   <Button fx:id="searchLocationButton" minWidth="0.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="Button" BorderPane.alignment="CENTER" />
                </right>
             </BorderPane>
-            <ComboBox fx:id="buildingChoiceBox" prefHeight="25.0" prefWidth="250.0">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </ComboBox>
-            <HBox prefHeight="0.0" prefWidth="248.0">
+            <ComboBox fx:id="buildingChoiceBox" prefHeight="25.0"/>
+            <HBox prefHeight="0.0">
                <children>
                   <Button fx:id="fromButton" disable="true" mnemonicParsing="false" onAction="#setDirectionsFrom" prefHeight="25.0" prefWidth="124.0" text="Directions From" />
                   <Button fx:id="toButton" disable="true" mnemonicParsing="false" onAction="#setDirectionsTo" prefHeight="25.0" prefWidth="125.0" text="Directions To" />

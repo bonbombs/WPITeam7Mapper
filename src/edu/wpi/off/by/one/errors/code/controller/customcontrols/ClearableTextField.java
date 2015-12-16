@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
+import java.util.Set;
 
 /**
  * Created by jules on 12/5/2015.
@@ -20,10 +21,10 @@ import java.io.IOException;
 public class ClearableTextField extends BorderPane {
 
     //region FXML attributes
-    @FXML private BorderPane textFieldButtonContainer;
-    @FXML private TextField textField;
-    @FXML private Button clearButton;
-    @FXML private Label errorLabel;
+    @FXML protected BorderPane textFieldButtonContainer;
+    @FXML protected AutoCompleteTextField textField;
+    @FXML protected Button clearButton;
+    @FXML protected Label errorLabel;
     //endregion
 
     //region constructor/s
@@ -116,6 +117,21 @@ public class ClearableTextField extends BorderPane {
         errorLabel.setPrefHeight(errorLabel.getMinHeight());
         errorLabel.setText("");
         textFieldButtonContainer.getStyleClass().remove("textFieldButtonContainerError");
+    }
+
+    /**
+     * Sets the tags list for autocomplete
+     * @param tags
+     */
+    public void setTagsSet(Set<String> tags){
+        this.textField.setTagsSet(tags);
+    }
+
+    /**
+     * Clears the content inside the textfield
+     */
+    public void clear(){
+        textField.clear();
     }
     //endregion
 

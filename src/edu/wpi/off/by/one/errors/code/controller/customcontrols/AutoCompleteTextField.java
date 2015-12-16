@@ -1,11 +1,7 @@
 package edu.wpi.off.by.one.errors.code.controller.customcontrols;
 
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 import edu.wpi.off.by.one.errors.code.controller.ControllerSingleton;
 import edu.wpi.off.by.one.errors.code.model.TagMap;
@@ -30,15 +26,18 @@ import javafx.scene.layout.BorderPane;
  *
  */
 public class AutoCompleteTextField extends TextField{
+    private Set<String> tags;
 	private final SortedSet<String> entries;
 	private ContextMenu entriesPopup;
 	
 	public AutoCompleteTextField(){
+        tags = Collections.emptySet();
 		setListeners();
 		entries = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
 		entriesPopup = new ContextMenu();
 		this.setOnMouseClicked(e -> {
-			update();
+			//update();
+            entries.addAll(tags);
 		});
 		
 		textProperty().addListener(new ChangeListener<String>(){
@@ -46,7 +45,7 @@ public class AutoCompleteTextField extends TextField{
 			@Override
 			public void changed(ObservableValue<? extends String> arg0, String arg1, String arg2) {
 				// TODO Auto-generated method stub
-				if(getText().length() == 0) entriesPopup.hide();
+				if(getText().length() == 0 || tags.isEmpty()) entriesPopup.hide();
 				else{
 					LinkedList<String> result = new LinkedList<>();
 					result.addAll(entries.subSet(getText(), getText() + Character.MAX_VALUE));
@@ -66,13 +65,12 @@ public class AutoCompleteTextField extends TextField{
 			@Override
 			public void changed(ObservableValue<? extends Boolean> arg0, Boolean arg1, Boolean arg2) {
 				// TODO Auto-generated method stub
-				entriesPopup.hide();
+                entriesPopup.hide();
 			}
 			
 		});
-		update();
-		
-		
+		//update();
+        entries.addAll(tags);
 	}
 	
 	private void setListeners(){
@@ -81,10 +79,10 @@ public class AutoCompleteTextField extends TextField{
 	
 	public SortedSet<String> getEntries() { return entries; }
 	
-	public void update(){
+	/*public void update(){
 		Set<String> tags = TagMap.getTagMap().getTags();
 		entries.addAll(tags);
-	}
+	}*/
 	protected void add(Set<String> tags){
 		entries.addAll(tags);
 	}
@@ -105,5 +103,9 @@ public class AutoCompleteTextField extends TextField{
 		}
 		entriesPopup.getItems().clear();
 		entriesPopup.getItems().addAll(menuItems);
+	}
+
+	public void setTagsSet(Set<String> tags){
+		this.tags = tags;
 	}
 }

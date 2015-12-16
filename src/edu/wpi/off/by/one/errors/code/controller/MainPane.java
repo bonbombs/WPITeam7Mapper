@@ -3,6 +3,8 @@ package edu.wpi.off.by.one.errors.code.controller;
 import java.io.IOException;
 
 import edu.wpi.off.by.one.errors.code.controller.menupanes.devtoolspanes.NodeDevToolPane;
+import edu.wpi.off.by.one.errors.code.controller.other.EmailPane;
+import edu.wpi.off.by.one.errors.code.controller.other.SMSPane;
 import edu.wpi.off.by.one.errors.code.model.Coordinate;
 import edu.wpi.off.by.one.errors.code.model.Display;
 import javafx.animation.FadeTransition;
@@ -30,7 +32,7 @@ import javafx.util.Duration;
  *		- Directions
  * 
  */
-public class MainPane extends BorderPane {
+public class MainPane extends StackPane {
     private BooleanProperty isDevModeOn;
 
 
@@ -46,6 +48,9 @@ public class MainPane extends BorderPane {
 	@FXML private MenuPane menuPane;
 	@FXML private MapRootPane mapRootPane;
 	@FXML private NavigationPane navigationPane;
+	@FXML private StackPane smsEmailContainer;
+	@FXML private EmailPane emailPane;
+	@FXML private SMSPane smsPane;
 
 	public Coordinate dropStartC;
 	public	Coordinate dropEndC; 
@@ -210,5 +215,24 @@ public class MainPane extends BorderPane {
         mapRootPane.getMapRootPane().translate.setAll(mapRootPane.translate.getX(), mapRootPane.translate.getY(), floor);
         mapRootPane.getMapRootPane().render();
     }
+
+	/**
+	 * shows the sms pane
+	 */
+	public void showSMSPane(boolean visible){
+		smsEmailContainer.visibleProperty().set(visible);
+		smsPane.setVisible(visible);
+		emailPane.setVisible(!visible);
+
+	}
+
+	/**
+	 * Shows email pane
+	 */
+	public void showEmailPane(boolean visible){
+		smsEmailContainer.visibleProperty().set(visible);
+		emailPane.setVisible(visible);
+		smsPane.setVisible(!visible);
+	}
 }
 
